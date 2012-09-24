@@ -1,0 +1,47 @@
+\mode<presentation>
+ {%
+  \usetheme{Esi}
+  \setbeamercovered{transparent}
+  \setbeamertemplate{navigation symbols}{}
+ }
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pslatex}
+\usepackage{palatino}
+\usepackage{textcomp}
+
+% Paramétrage de lstlisting
+\definecolor{ligthgray}{rgb}{0.85,0.85,0.85}
+\lstset{language=java,%
+    commentstyle=\itshape,%
+    basicstyle=\scriptsize\ttfamily,%
+    keywordstyle=\scriptsize\bf,%
+    backgroundcolor=\color{ligthgray},%
+%    frameround=ssss, %tttt,%
+    framerule=0.5pt,%
+    frame=trbl,%
+	showstringspaces=false,%
+    tabsize=1}
+
+% Définitions de couleurs
+% \definecolor{}{}{}
+\definecolor{blue}{rgb}{0.12,0.12,0.54}
+\definecolor{darkred}{rgb}{0.5,0,0}
+
+%%% Permet l'utilisationdes url
+\usepackage{hyperref}
+\hypersetup{%
+        pdfstartview={FitH},
+        bookmarksopen=false,
+        bookmarksopenlevel=1,
+        bookmarksnumbered=true,
+        colorlinks=true,
+        urlcolor=blue,
+        linkcolor=gray 
+}
+\usepackage{url}
+
+

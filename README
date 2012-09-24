@@ -1,1 +1,15 @@
-TODO Écrire ce readme
+Slides du cours de WAN2i de 2e industrielle en BAC info à l'ÉSI
+(http://www.heb.be/esi)
+
+Pour compiler
+  pdflatex wan2i-master.tex
+
+Pour contribuer
+  - me contacter par mail ou (mieux)
+  - ouvrir une «issue»
+
+Contact
+Pierre Bettens - pbt
+pbettens@heb.be
+
+
