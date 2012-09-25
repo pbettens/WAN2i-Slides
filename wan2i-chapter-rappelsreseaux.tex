@@ -36,7 +36,7 @@ Le \textbf{modèle OSI} propose un découpage en 7 couches.
 À ces couches sont associés des protocoles que nous n'étudions pas.
 
 \begin{center}
-	\includegraphics[width=.55\linewidth]{img/modele-osi-500x500.png}
+	\includegraphics[width=.55\linewidth]{img/sousbock-modele-osi.png}
 \end{center}
 \end{frame}
 
@@ -104,7 +104,7 @@ Le \textbf{modèle OSI} propose un découpage en 7 couches.
 Le \textbf{modèle TCP / IP} propose également un découpage en couches. On s'intéresse particulièrement aux protocoles associés au modèle.
 
 \begin{center}
-	\includegraphics[width=.55\linewidth]{img/modele-tcpip-500x500.png}
+	\includegraphics[width=.55\linewidth]{img/sousbock-modele-tcpip.png}
 \end{center}
 \end{frame}
 
@@ -160,13 +160,15 @@ Distinguer
 
 \begin{frame}[fragile]
   \frametitle{Rappels réseaux - Ethernet}
-{\large\bf Couche physique}
+{\large\bf Couche physique (\textit{physical})}
 \begin{itemize}
 	\item Jadis, cable coaxial
 	\item Paire torsadée
 \end{itemize}
 
-{\large\bf Sous couche d'accès au réseau (\textit{Media Access Control})}
+\vspace{.7cm}
+{\large\bf Couche liaison de donnéee (\textit{data link})}\\
+{\bf Sous couche d'accès au réseau (\textit{Media Access Control})}
 \begin{itemize}
 	\item Format de la trame Ethernet \\
 	\begin{center}
@@ -217,19 +219,73 @@ Distinguer
 		\item Minimum 46 bytes (pour que la trame fasse minimum 64 bytes)
 	\end{itemize}
 \end{itemize}
+\vspace{1cm}Pourquoi imposer un minimum de 64 bytes ... 
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Rappels réseaux - Ethernet}
-{\large\bf Format de la trame Ethernet (suite)}
+{\large\bf Protocole de gestion d'accès au canal}\\
+Sur un réseau à diffusion où les participants partagent un même canal, il faut
+déterminer \textbf{qui} est autorisé à parler.
+
+\vspace{.7cm}{\bf Protocole CSMA/CD}
 \begin{itemize}
-	\item Détection de collisions
+	\item {\it Carrier Sense Multiple Access with Collision Detection}
+	\item Protocole d'accès par écoute de porteuse avec détection de collisions
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Rappels réseaux - Ethernet}
+{\large\bf Protocole CSMA/CD (suite)}\\
+Principe
+\begin{enumerate}
+	\item Écouter le support
+	\item \textbf{Si} personne n'émet, émettre \\
+	\textbf{sinon} attendre et émettre \sout{dès que} après un temps aléatoire
+	$\tau$
+	\item \textbf{Si collision}, 
 	\begin{itemize}
-		\item Le signal de brouillage peut mettre $2\tau$ pour revenir à l'émetteur 
-		\item Dans LAN 10Mbit/s, $2\tau$ est proche de $50\mu s$  la trame
-		doit donc avoir une longueur de 500 bits. On arrondi à 512 bits = 64
-		bytes
+		\item interruption de l'émission
+		\item pause aléatoire 
 	\end{itemize}
+	… et \textit{goto 1}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Rappels réseaux - Ethernet}
+{\large\bf Protocole CSMA/CD (suite)}\\
+\textbf{Collision} 
+\begin{itemize}
+	\item Une collision \textbf{est détectée} par la réécoute de sa propre émission … si
+	c'est différent, c'est qu'il y a collision
+	\item Une collision \textbf{survient} 
+	\begin{itemize}
+		\item si deux envois simultanés
+		\item si H1 émet et H2 émet car le signal de H1 n'a pas encore atteint
+		H2 à cause du délai de propagation
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Rappels réseaux - Ethernet}
+{\large\bf Protocole CSMA/CD (suite)}\\
+\begin{center}
+	\includegraphics[width=.6\linewidth]{img/sousbock-csmacd-propagation.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Rappels réseaux - Ethernet}
+{\large\bf Protocole CSMA/CD et trame Éthernet (suite)}\\
+Pourquoi fixer la longueur d'une trame à 64 bytes ? 
+\begin{itemize}
+	\item Le signal de brouillage peut mettre $2\tau$ pour revenir à l'émetteur 
+	\item Dans LAN 10Mbit/s, $2\tau$ est proche de $50\mu s$ pour un cable
+	de 100m de long. La trame doit donc avoir une longueur de 500 bits. On
+	arrondi à 512 bits = 64 bytes
 \end{itemize}
 \begin{center}
 	\includegraphics[width=.80\linewidth]{img/4-22.jpg} \\
@@ -239,13 +295,32 @@ Distinguer
 
 \begin{frame}[fragile]
   \frametitle{Rappels réseaux - Ethernet}
-{\large\bf Format de la trame Ethernet (suite)}
+{\large\bf Format de la trame Ethernet (fin)}
 \begin{itemize}
 	\item Total de contrôle (\textit{checksum})
 	\begin{itemize}
 		\item Si erreur, la trame est supprimée
 		\item Valeur CRC de 32 bits
 	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Rappels réseaux - Ethernet}
+{\large\bf Éthernet commuté}\\
+Le passage du câble coaxial à la «paire croisée» suite aux ruptures de liaison
+et la facilité d'utilisation de ces câbles amènent rapidement à l'introduction
+des \textit{hub}. 
+\begin{itemize}
+	\item Un hub relie électriquement les câbles
+	\item L'algorithme CSMA/CD est toujours d'actualité
+\end{itemize}
+
+L'\textbf{éthernet commuté}, c'est l'apparition du \textbf{commutateur}
+(\textbf{\textit{switch}})
+\begin{itemize}
+	\item Émet les trames vers le port auquel la trame est destinée
+	\item Abstraction de CSMA/CD puisqu'il n'y a plus de collision
 \end{itemize}
 \end{frame}
 
@@ -256,8 +331,12 @@ Distinguer
 Observer le format d'une trame éthernet 
 \begin{itemize}
 	\item Utilisation de Wireshark
-	\item Faire passer une trame et repérer les \textit{MAC address}
-	\item Constater / vérifier que le mode promicuous ne fonctionne pas avec un switch
+	\item Faire passer une trame\footnote{Commencer avec l'interface \texttt{lo}
+	et ensuite avec \texttt{ethi}} 
+	et repérer les différentes valeurs dans la
+	trame; \textit{MAC address}, type, ...
+	\item Constater / vérifier que le mode promicuous ne fonctionne pas avec un
+	\textit{switch} mais bien avec un \textit{hub}
 	\item Liens / références / aide
 	\begin{itemize}
 		\item Wireshark \url{http://www.wireshark.org}
