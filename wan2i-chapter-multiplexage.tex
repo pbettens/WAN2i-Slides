@@ -1,0 +1,144 @@
+\section{Multiplexage}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage}
+{\bf\large  Multiplexage}\\
+Consiste à partager une même ligne entre plusieurs signaux
+\par Il est inenvisageable de «tirer» une ligne par signal
+\end{frame}
+
+
+\section{Multiplexage fréquentiel (FDM)}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage fréquentiel (FDM)}
+{\bf\large Multiplexage fréquentiel 
+(\textit{FDM Frequency Division Multiplexing})}\\
+Division du spectre en bandes de fréquences
+\begin{itemize}
+	\item Basé sur la transmission «passe bande»
+	\begin{itemize}
+		\item Un signal qui occupe de 0 à B Hz peut être décalé pour occuper une
+		fréquence de S à S+B Hz
+	\end{itemize}
+	\item Division du spectre en bandes de fréquences, chaque utilisateur a la
+	possession exclusive d'une bande
+\end{itemize}
+\vspace{1cm}
+Exemples
+\begin{itemize}
+	\item la radiodiffusion AM
+	\item réseaux téléphoniques, cellulaires, sans fil et satellitaires
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage fréquentiel (FDM)}
+\begin{center}
+	\includegraphics[width=.7\linewidth]{img/2-24.jpg}\\
+	{\scriptsize FDM - Image de [Tanenbaum]}
+\end{center}
+\end{frame}
+
+
+\section{Multiplexage par répartition orthogonal de la fréquence (OFDM)}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage par répartition orthogonale de la fréquence (OFDM)}
+{\large\bf Multiplexage par répartition orthogonale de la fréquence 
+(\textit{OFDM Orthogonal Frequency Division Multiplexing})}\\
+Division du spectre en plusieurs sous-porteuses
+\begin{itemize}
+	\item Basé sur QAM (\textit{Quadrature Amplitude Modulation}), technique de
+	modulation par variation de phase et de fréquence
+	\item Les signaux de chaque sous porteuse se chevauchent mais s'annulent au
+	centre car leurs fréquences sont orthogonales
+\end{itemize}
+\vspace{.6cm}
+Exemples 
+\begin{itemize}
+	\item Très haut débit
+	\item CPL (Courant porteur)
+	\item 4G
+	\item ADSL, VDSL
+	\item cable
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage par répartition orthogonale de la fréquence (OFDM)}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{img/2-26.png}\\
+	{\scriptsize OFDM - Image de [Tanenbaum]}
+\end{center}
+\end{frame}
+
+
+\section{Multiplexage temporel (TDM)}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage temporel (TDM)}
+{\bf\large Multipdexage temporel (\textit{TDM Time Division Multiplexing})}\\
+Émission tour à tour
+\begin{itemize}
+	\item Chaque utilisateur émet à son tour sur l'intégralité de la bande passante
+\end{itemize}
+\vspace{1cm}
+Exemple
+\begin{itemize}
+	\item Réseaux téléphoniques et cellulaires
+\end{itemize}
+\end{frame}
+
+\section{Multiplexage temporel TDM}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage temporel TDM}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{img/2-27-tmp.jpg}\\
+	{\scriptsize TDM - Image [Tanenbaum] TODO}
+\end{center}
+\end{frame}
+
+
+
+\section{Multiplexage par répartition en codes CDMA}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage par répartition en codes (CDMA)}
+{\large\bf Multiplexage par répartition de codes 
+(\textit{CDMA Code Division Multiple Access})}\\
+Plusieurs utilisateurs utilisent la même bande de fréquence
+\begin{itemize}
+	\item Tout le monde émet sur la même fréquence
+	\item Plusieurs émissions se distinguent car elles sont codées différement
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage par répartition en codes (CDMA)}
+\textbf{Fonctionnement}
+\begin{itemize}
+	\item Chaque temps bit est divisé en \textit{m} courts intervalles
+	(\textbf{chips})
+	\item \textit{m} vaut généralement 64 ou 128 (dans l'exemple, $m=8$)
+	\item Chaque station reçoit une \textbf{séquence de chips} unique et telle
+	que deux séquences $S$ et $T$ quelconque ont un produit nul $S\bullet T$
+	$$S\bullet T = \frac{1}{m}\sum^m_{i=1}S_iT_i$$
+	\begin{itemize}
+		\item Exemple (-1, -1, -1, +1, +1,-1, +1, +1)
+	\end{itemize}
+	\item Pour émettre 1, émission de la séquence de chips
+	\item Pour émettre 0, émission de la \textbf{négation} de la séquence
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage par répartition en codes (CDMA)}
+\begin{center}
+	\item \includegraphics[width=.5\linewidth]{img/4-16.jpg}\\
+	{\scriptsize Exemple CDMA - Image [Tanenbaum]}
+\end{center}
+\end{frame}
+
+
