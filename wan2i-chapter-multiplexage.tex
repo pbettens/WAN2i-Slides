@@ -2,6 +2,21 @@
 
 \begin{frame}[fragile]
   \frametitle{Multiplexage}
+\begin{center}
+	\Huge{\bf\color{blue}Multiplexage}
+\end{center}
+\begin{flushright}
+	\item Multiplexage fréquentiel
+	\item Multiplexage par répartition orthogonale de la la fréquence
+	\item Multiplexage temporel
+	\item Multiplexage par répartition de codes
+	\item Multiplexage en longueur d'ondes
+\end{flushright}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage}
 {\bf\large  Multiplexage}\\
 Consiste à partager une même ligne entre plusieurs signaux
 \par Il est inenvisageable de «tirer» une ligne par signal
@@ -40,12 +55,73 @@ Exemples
 \end{center}
 \end{frame}
 
+\begin{frame}[fragile]
+	\frametitle{Transmission passe-bande}
+{\large\bf Transmission passe-bande}
+\par
+En transmission passe-bande, la \textbf{modulation numérique} se fait en modifiant
+\begin{itemize}
+	\item l'amplitude (\textit{AFK Amplitude Shift Keying})
+	\item la fréquence (\textit{FSK Frequence Shift Keying}) ou
+	\item la phase (\textit{PSK Phase Shift Keying})
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Transmission passe-bande}
+{\large\bf Transmission passe-bande}
+\begin{center}
+	\includegraphics[width=.64\linewidth]{img/2-22.png} \\
+	{\scriptsize From [Tanenbaum]}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Transmission passe-bande}
+{\large\bf \textit{BPSK Binary Phase Shift Keying}}
+\begin{itemize}
+	\item La porteuse est décalée de 0 ou $\pi$, soit \textbf{deux symboles}
+	($\frac{2\pi}{2}$)
+\end{itemize}
+\vspace{1cm}
+{\large\bf \textit{QPSK Quadrature Phase Shift Keying}}
+\begin{itemize}
+	\item On ne découpe plus en 2 mais en 4, soit 
+	$\frac{\pi}{4}$, $\frac{3\pi}{4}$, $\frac{5\pi}{4}$ et $\frac{7\pi}{4}$
+	\item Permet de représenter 4 symboles, soit 2 bits par symbole
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Transmission passe-bande}
+{\large\bf \textit{QAM Quadrature Amplitude Modulation}}
+\begin{itemize}
+	\item Combinaison de PSK et AFK
+	\item Permet de plusieurs symboles, on parle de \textbf{constellations}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=.6\linewidth]{img/2-23.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Transmission passe-bande}
+{\large\bf \textit{QAM Quadrature Amplitude Modulation (suite)}}
+\begin{itemize}
+	\item QAM16, QAM64, ...
+	\item Association des bits aux symboles de manière à minimiser 
+	les erreurs dues au bruit, \textbf{code de Gray}
+\end{itemize}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{img/2-24.png}
+\end{center}
+\end{frame}
 
 \section{Multiplexage par répartition orthogonal de la fréquence (OFDM)}
 
 \begin{frame}[fragile]
   \frametitle{Multiplexage par répartition orthogonale de la fréquence (OFDM)}
-{\large\bf Multiplexage par répartition orthogonale de la fréquence 
+{\large\bf Multiplexage par répartition orthogonale de la fréquence \\
 (\textit{OFDM Orthogonal Frequency Division Multiplexing})}\\
 Division du spectre en plusieurs sous-porteuses
 \begin{itemize}
@@ -61,7 +137,7 @@ Exemples
 	\item CPL (Courant porteur)
 	\item 4G
 	\item ADSL, VDSL
-	\item cable
+	\item câble
 \end{itemize}
 \end{frame}
 
@@ -78,7 +154,8 @@ Exemples
 
 \begin{frame}[fragile]
   \frametitle{Multiplexage temporel (TDM)}
-{\bf\large Multipdexage temporel (\textit{TDM Time Division Multiplexing})}\\
+{\bf\large Multipdexage temporel \\
+(\textit{TDM Time Division Multiplexing})}\\
 Émission tour à tour
 \begin{itemize}
 	\item Chaque utilisateur émet à son tour sur l'intégralité de la bande passante
@@ -95,8 +172,8 @@ Exemple
 \begin{frame}[fragile]
   \frametitle{Multiplexage temporel TDM}
 \begin{center}
-	\includegraphics[width=.8\linewidth]{img/2-27-tmp.jpg}\\
-	{\scriptsize TDM - Image [Tanenbaum] TODO}
+	\includegraphics[width=.8\linewidth]{img/2-27.png}\\
+	{\scriptsize TDM - Image [Tanenbaum]}
 \end{center}
 \end{frame}
 
@@ -106,7 +183,7 @@ Exemple
 
 \begin{frame}[fragile]
   \frametitle{Multiplexage par répartition en codes (CDMA)}
-{\large\bf Multiplexage par répartition de codes 
+{\large\bf Multiplexage par répartition de codes \\
 (\textit{CDMA Code Division Multiple Access})}\\
 Plusieurs utilisateurs utilisent la même bande de fréquence
 \begin{itemize}
@@ -136,8 +213,35 @@ Plusieurs utilisateurs utilisent la même bande de fréquence
 \begin{frame}[fragile]
   \frametitle{Multiplexage par répartition en codes (CDMA)}
 \begin{center}
-	\item \includegraphics[width=.5\linewidth]{img/4-16.jpg}\\
+	\item \includegraphics[width=.7\linewidth]{img/2-26.png}\\
 	{\scriptsize Exemple CDMA - Image [Tanenbaum]}
+\end{center}
+\end{frame}
+
+\section{Multiplexage en longueur d'ondes (WDM)}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage en longueur d'ondes (WDM)}
+{\large\bf Multiplexage en longueur d'ondes  \\
+(\textit{WDM Wavelength Division Multiplexing})}
+\begin{itemize}
+	\item Sorte de multiplexage fréquentiel à très hautes fréquences
+	\item Destiné à la fibre optique (grande bande passante)
+\end{itemize}
+\vspace{.5cm}
+\textbf{Fonctionnement}
+\begin{itemize}
+	\item Chaque fibre arrive sur un prisme
+	\item Les flux, d'énergie et de longueur d'onde spécifique, sont combinés
+	\item À la sortie, le faisceau est séparé
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Multiplexage en longueur d'ondes (WDM)}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{img/2-41.png}\\
+	{\scriptsize WDM - Image [Tanenbaum]}
 \end{center}
 \end{frame}
 
