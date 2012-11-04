@@ -9,7 +9,8 @@
 \begin{flushright}
   \item Présentation
   \item La boucle locale
-  \item Artères interurbaines (<i>Backbone</i>)
+  \item Artères interurbaines (\textit{Backbone})
+  \item Les centres de commutations
 \end{flushright}
 \end{frame}
 
@@ -38,6 +39,7 @@
 \end{itemize}
 \begin{center}
 	\includegraphics[width=.53\linewidth]{img/sousbock-rtc-interconnexiontotale.png}
+	\par{\scriptsize Image de [Tanenbaum]} 
 \end{center}
 \end{frame}
 
@@ -145,6 +147,13 @@
 \section{RTC - La boucle locale}
 
 \begin{frame}[fragile]
+	\frametitle{La boucle locale}
+\begin{center}
+	{\Huge\bf\color{blue} La boucle locale}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
   \frametitle{La boucle locale}
 {\large\bf La \textbf{boucle locale} ou \textit{«le dernier kilomètre»}}
 \begin{itemize}
@@ -155,11 +164,15 @@
 \end{itemize}
 \end{frame}
 
+
+
+\section{RTC - Ateliers de recherche 1}
+
 \begin{frame}[fragile]
-	\frametitle{La boucle locale - Ateliers de recherche 1}
+	\frametitle{RTC - La boucle locale - Ateliers de recherche 1}
 {\large\bf Ateliers de recherche 1} 
 \begin{itemize}
-	\item Sur bases des pages 156 à 163 de [Tanenbaum], expliquer, comprendre, … 
+	\item Sur base des pages 156 à 163 de [Tanenbaum], expliquer, comprendre, … 
 	\begin{itemize}
 		\item le modem téléphonique
 		\item le modem xDSL
@@ -173,6 +186,14 @@
 
 
 \section{RTC - Artères interurbaines (backbones)}
+
+\begin{frame}[fragile]
+	\frametitle{RTC - Artères interurbaines (backbones)}
+\begin{center}
+	{\Huge\bf\color{blue} RTC - Artères interurbaines (backbones)}
+\end{center}
+\end{frame}
+
 
 \begin{frame}[fragile]
   \frametitle{RTC - Artères interurbaines (\textit{backbones})}
@@ -194,10 +215,10 @@
 PCM est une technique d'échantillonage
 \begin{itemize}
 	\item Le codec prélève 8000 échantillons par seconde
-	(125$\mu s$/échantillon)
+	(125 $\mu s$/échantillon)
 	\item 8000 échantillons, 2 fois la fréquence de 4000Hz
 	\item Chaque échantillon est transformé en nombre de 8 bits
-	\item Débit binaire standard 64kbit/s ($2.4000(Hz).8(bits)$
+	\item Débit binaire standard 64kbit/s ($2\times4000(Hz)\times8(bits)$)
 \end{itemize}
 \end{frame}
 
@@ -232,6 +253,7 @@ PCM est une technique d'échantillonage
 {\large\bf Multiplexage temporel - Technique T1 (suite)}
 \begin{center}
 	\includegraphics[width=.8\linewidth]{img/2-26-old.jpg}
+	\par{\scriptsize Image de [Tanenbaum]} 
 \end{center}
 \end{frame}
 
@@ -244,6 +266,8 @@ PCM est une technique d'échantillonage
 	\item les 8 bits sont utilisés pour les données mais les échantillons 0 et 16 
 	sont utilisés pour la signalisation
 	\item chaque échantillon est nommé «intervalle de temps» ou \textbf{slot}
+	\item une ligne E1 fournit un débit (théorique) de 2,048Mbits/s ($8000\times
+	256$) 
 \end{itemize}
 \end{frame}
 
@@ -272,7 +296,107 @@ PCM est une technique d'échantillonage
 	\frametitle{RTC - Artères interurbaines (\textit{backbones})}
 \begin{center}
 	\includegraphics[width=.9\linewidth]{img/2-28-old.jpg}
+	\par{\scriptsize Image de [Tanenbaum]} 
 \end{center}
 \end{frame}
 
+
+
+\section{RTC - Ateliers de recherche 2}
+
+\begin{frame}[fragile]
+	\frametitle{RTC - Backones - Ateliers de recherche 2}
+{\large\bf Ateliers de recherche 2} 
+\begin{itemize}
+	\item Sur base des pages 167 à 170 de [Tanenbaum], expliquer, comprendre, …
+	\textbf{SONET (Synchronous Optical NETwork)}
+\end{itemize}
+\end{frame}
+
+
+
+\section{RTC - Centres de commutation (central office)}
+
+\begin{frame}[fragile]
+  \frametitle{RTC - Centres de commutation (central office)}
+{\Large\bf RTC - Centres de commutation (central office)}
+{\large\bf Préalables}
+\begin{itemize}
+	\item Infrastructure extérieure
+	\begin{itemize}
+		\item boucle locale (\textit{local loop})
+		\item artères principales (\textit{trunk / backbones})
+	\end{itemize}
+	\item Infrastructure intérieure
+	\begin{itemize}
+		\item centres de commutation
+	\end{itemize}
+\end{itemize}
+\vspace{.5cm}
+Techniques de commutation
+\begin{itemize}
+	\item commutation de circuits
+	\item commutation de paquets
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	  \frametitle{RTC - Centres de commutation (central office)}
+{\large\bf Commutation de circuits}
+\begin{itemize}
+	\item Système téléphonique traditionnel
+	\item Principe: recherche d'un chemin de bout en bout avant la transmission des données
+	\item Nécessite un délai d'établissement de circuits
+	\item Lorsque le chemin est réservé,
+	\begin{itemize}
+		\item transmission à la vitesse de propagation electromagnétique (5ms/1000km)
+		\item pas de congestion
+	\end{itemize}
+	\item \textbf{Service garanti avec risque de gaspillage de la bande passante}
+	\item Facturation à la durée et à la distance
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{RTC - Centres de commutation (central office)}
+{\large\bf Commutation de paquets}
+\begin{itemize}
+	\item Progression grâce à la \textit{voIP}
+	\item Les paquets sont envoyés dès qu'ils sont disponibles, ils peuvent
+	arriver dans le dérordre
+	\item Transmission différée (\textit{store and forward})
+	\item Risque de congestion et délai de mise en file
+	\item Meilleure tolérance aux pannes (route alternative possible)
+	\item \textbf{Service non garanti mais sans gaspillage de bande passante}
+	\item Facturation au volume de données
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{RTC - Centres de commutation (central office)}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{img/2-34-old.jpg}
+	\par{\scriptsize (a) Commutation de circuit  (b) Commutation de paquets 
+	\\ Image de [Tanenbaum]} 
+\end{center}
+\end{frame}
+
+
+
+\section{RTC - Ateliers de recherche 3}
+
+\begin{frame}[fragile]
+	\frametitle{RTC Réseau de télévision câblé - Ateliers de recherche 3}
+{\large\bf Ateliers de recherche 3} 
+\begin{itemize}
+	\item Sur base des pages 192 à 198 de [Tanenbaum], expliquer,
+	comprendre,$\cdots$
+	\begin{center}
+		\textbf{\large le réseau de télévision câblée}
+	\end{center}
+	\item Rédiger un document commun présentant quelques points de comparaison
+	entre \textbf{xDSL} sur le réseau téléphonique commuté et
+	l'\textbf{internet par le câble}. 
+\end{itemize}
+\end{frame}
 
