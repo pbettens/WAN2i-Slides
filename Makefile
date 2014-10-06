@@ -1,4 +1,4 @@
-NOM 	= slides
+NOM 	= wan2i-master
 
 all: $(NOM).tex
 	mkdir -p build
